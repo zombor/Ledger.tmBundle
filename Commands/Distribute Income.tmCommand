@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+class Float
+
+  def commas
+    self.to_s =~ /([^\.]*)(\..*)?/
+    int, dec = $1.reverse, $2 ? $2 : ""
+    while int.gsub!(/(,|\.|^)(\d{3})(\d)/, '\1\2,\3')
+    end
+    int.reverse + dec
+  end
+
+end
+
+puts "\n"
+
+total = /([0-9]{0,3}?([,][0-9]{3}){0,4}([.][0-9]{0,4})?)$|^[$]?([0-9]{1,14})?([.][0-9]{1,4})$|^[$]?[0-9]{1,14}$/.match(ENV['TM_SELECTED_TEXT'])
+
+if ( ! total.nil?)
+	total = total[0].sub(",", "").to_f
+
+	while (total &gt; 0) do
+		res = TextMate::UI.request_string(:title =&gt; "Enter distribution", :prompt =&gt; "Enter a virtual transaction category and amount to apply:", :default =&gt; "(Expenses:&lt;expense&gt;) -$"+total.commas)
+
+		if (res.nil?)
+			exit
+		end
+
+		this_total = /([0-9]{0,3}?([,]{0,1}[0-9]{3}){0,4}([.][0-9]{0,4})?)$|^[$]?([0-9]{1,14})?([.][0-9]{1,4})$|^[$]?[0-9]{1,14}$/.match(res)
+
+		this_total = this_total[0].sub(",", "").to_f
+
+		total = total-this_total
+		puts "\t"+res
+	end
+end</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^@l</string>
+	<key>name</key>
+	<string>Distribute Income</string>
+	<key>output</key>
+	<string>afterSelectedText</string>
+	<key>scope</key>
+	<string>source.ledger</string>
+	<key>uuid</key>
+	<string>D4109A4A-3EC2-42EF-8F6F-4AA208D73811</string>
+</dict>
+</plist>

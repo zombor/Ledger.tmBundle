@@ -24,6 +24,8 @@ end
 	<string>Cleared Balance</string>
 	<key>output</key>
 	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.ledger</string>
 	<key>uuid</key>
 	<string>A24773AE-27B5-4D7B-ABFE-D7AB8ABDB796</string>
 </dict>

@@ -23,6 +23,8 @@ end</string>
 	<string>Current Balances - Virtualized</string>
 	<key>output</key>
 	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.ledger</string>
 	<key>uuid</key>
 	<string>0278065B-B80C-4D56-80E6-FB1B21E65966</string>
 </dict>

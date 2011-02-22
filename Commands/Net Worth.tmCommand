@@ -26,6 +26,8 @@ end</string>
 	<string>Net Worth</string>
 	<key>output</key>
 	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.ledger</string>
 	<key>uuid</key>
 	<string>6DFAB9C5-8963-491B-97B5-1D6DF4A341E8</string>
 </dict>

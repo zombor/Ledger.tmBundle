@@ -9,6 +9,8 @@
 	${0:Virtual Transactions}</string>
 	<key>name</key>
 	<string>New Entry</string>
+	<key>scope</key>
+	<string>source.ledger</string>
 	<key>tabTrigger</key>
 	<string>ent</string>
 	<key>uuid</key>

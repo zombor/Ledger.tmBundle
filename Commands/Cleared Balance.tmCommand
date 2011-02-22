@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+
+TextMate::Executor.run('/opt/local/bin/watch', ENV['TM_LEDGER'], '-f', ENV['TM_FILEPATH'], '--cleared', 'bal', 'assets:bank:checking') do |str, type|
+	str = htmlize(str)
+	str =  "&lt;span class=\"stderr\"&gt;#{htmlize(str)}&lt;/span&gt;" if type == :out
+	puts str
+end
+
+#/opt/local/bin/watch $TM_LEDGER -f $TM_FILEPATH --cleared bal assets:bank:checking &amp;&gt;/dev/null &amp;</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>^@l</string>
+	<key>name</key>
+	<string>Cleared Balance</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>A24773AE-27B5-4D7B-ABFE-D7AB8ABDB796</string>
+</dict>
+</plist>

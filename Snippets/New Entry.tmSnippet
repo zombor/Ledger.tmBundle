@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>`date "+%Y/%m/%d"` ${1:Description}
+	${2:Source}		-\$${3:Amount}
+	${4:Destination}
+	${0:Virtual Transactions}</string>
+	<key>name</key>
+	<string>New Entry</string>
+	<key>tabTrigger</key>
+	<string>ent</string>
+	<key>uuid</key>
+	<string>28421149-131A-4D48-985F-50B33B25B573</string>
+</dict>
+</plist>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Ledger</string>
+	<key>ordering</key>
+	<array>
+		<string>28421149-131A-4D48-985F-50B33B25B573</string>
+		<string>0278065B-B80C-4D56-80E6-FB1B21E65966</string>
+		<string>A24773AE-27B5-4D7B-ABFE-D7AB8ABDB796</string>
+		<string>6DFAB9C5-8963-491B-97B5-1D6DF4A341E8</string>
+		<string>011F6E3B-87D7-4BF2-9B0A-A649784F21A3</string>
+	</array>
+	<key>uuid</key>
+	<string>FB96EA9C-4119-403C-A6A2-0891A6A01A78</string>
+</dict>
+</plist>

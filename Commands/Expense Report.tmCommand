@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+start_date = TextMate::UI.request_string(:title =&gt; "Start Date", :prompt =&gt; "Enter a start date:", :default =&gt; `date "+%Y/%m/01"`)
+
+end_date = TextMate::UI.request_string(:title =&gt; "Start Date", :prompt =&gt; "Enter a start date:", :default =&gt; `date "+%Y/%m/%d"`)
+
+cmd = "ledger"
+args = ["--file=#{ENV['TM_FILEPATH']}", "-Rs", "--begin="+start_date, "--end="+end_date, "bal", "expenses"]
+
+TextMate::Executor.run(cmd, args) do |str, type|
+  "&lt;span class=\"stderr\"&gt;#{htmlize(str)}&lt;/span&gt;" if type == :out
+end
+
+# echo command
+puts "&lt;span class=\"stderr\"&gt;#{cmd} "
+args.each do |arg|
+	puts arg+" "
+end
+puts "&lt;/span&gt;"</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>^@l</string>
+	<key>name</key>
+	<string>Expense Report</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.ledger</string>
+	<key>uuid</key>
+	<string>F55386A1-F869-4C81-A070-790EABCE0A90</string>
+</dict>
+</plist>

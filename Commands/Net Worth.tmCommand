@@ -5,7 +5,19 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>$TM_LEDGER -f $TM_FILEPATH bal ^assets ^liab</string>
+	<string>#!/usr/bin/env ruby
+
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/save_current_document"
+
+TextMate.save_current_document
+
+cmd = "ledger"
+args = ["--file=#{ENV['TM_FILEPATH']}", "bal", "^assets", "^liab"]
+
+TextMate::Executor.run(cmd, args) do |str, type|
+  "&lt;span class=\"stderr\"&gt;#{htmlize(str)}&lt;/span&gt;" if type == :out
+end</string>
 	<key>input</key>
 	<string>document</string>
 	<key>keyEquivalent</key>
@@ -13,7 +25,7 @@
 	<key>name</key>
 	<string>Net Worth</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
+	<string>showAsHTML</string>
 	<key>uuid</key>
 	<string>6DFAB9C5-8963-491B-97B5-1D6DF4A341E8</string>
 </dict>

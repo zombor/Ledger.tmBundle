@@ -5,7 +5,16 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>$TM_LEDGER -f $TM_FILEPATH -Rs bal|pre</string>
+	<string>#!/usr/bin/env ruby
+
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+
+cmd = "ledger"
+args = ["--file=#{ENV['TM_FILEPATH']}", "-Rs", "bal"]
+
+TextMate::Executor.run(cmd, args) do |str, type|
+  "&lt;span class=\"stderr\"&gt;#{htmlize(str)}&lt;/span&gt;" if type == :out
+end</string>
 	<key>input</key>
 	<string>document</string>
 	<key>keyEquivalent</key>

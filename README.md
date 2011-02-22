@@ -17,7 +17,7 @@ It also has a tab completed Snippet to enter a new ledger entry, `ent`
 
 This bundle abides by my workflow, which heavily uses the concept of virtual transactions and accounts. If you are unfamiliar with this concept, please read the PDF manual for ledger.
 
-When you get income, you should run the "Distribute Income" command by selecting the to: and from: accounts in your ledger, and activating the command. You will then get prompts to assign income to each "virtual bucket" until the balance reaches zero, or you cancel the operation. If you cancel the operation, the remaining balance will be assigned to the "Income:Unassigned:Salary" bucket.
+When you get income, you should run the "Distribute Income" command by selecting the to: and from: accounts in your ledger entry, and activating the command. You will then get prompts to assign income to each "virtual bucket" until the balance reaches zero, or you cancel the operation. If you cancel the operation, the remaining balance will be assigned to the "Income:Unassigned:Salary" bucket.
 
 When you spend money, the balance of these virtual buckets will slowly rise to zero. If the balance of a bucket is already zero, or makes it go over zero, you will need to balance the output. You must have money in your "Income:Unassigned:Salary" bucket. Here is a simple example of an entry like this:
 

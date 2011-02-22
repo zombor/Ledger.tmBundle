@@ -32,6 +32,11 @@ if ( ! total.nil?)
 		res = TextMate::UI.request_string(:title =&gt; "Enter distribution", :prompt =&gt; "Enter a virtual transaction category and amount to apply:", :default =&gt; "(Expenses:&lt;expense&gt;) -$"+total.commas)
 
 		if (res.nil?)
+			# see if there's anything left over, and apply it to Income:Unassigned:Salary
+			if (total &gt; 0)
+				puts "\t(Income:Unassigned:Salary) $"+total.commas
+			end
+
 			exit
 		end
 

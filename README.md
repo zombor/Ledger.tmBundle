@@ -9,6 +9,7 @@ It is a work in progress, but has support for the following functions:
  - Net Worth
  - Distribute Income
  - Expense Report
+ - Budget Report
 
 To activate these commands, use ^⌘L and you'll get a menu to choose the command.
 
